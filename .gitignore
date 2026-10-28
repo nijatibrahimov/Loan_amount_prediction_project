@@ -6,6 +6,6 @@ __pycache__/
 
 # Virtual environment
 venv/
-
+.vscode/
 # Sensitive files
 .env
