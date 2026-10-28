@@ -2,25 +2,21 @@
 
 ## Overview
 
-This project focuses on predicting loan amounts using machine learning techniques. It includes exploratory data analysis, statistical analysis, feature scaling, model development, and evaluation.
+This project aims to predict loan amounts using machine learning techniques. It combines exploratory data analysis, statistical analysis, data preprocessing, model development, and evaluation with a Flask web application integrated with a MySQL database.
 
-A Random Forest Regressor was trained to predict loan amounts based on the available dataset features. The project also includes a Flask web application connected to a MySQL database to support the application's prediction workflow.
+A Random Forest Regressor was developed to predict loan amounts based on the available dataset features. The project also includes a Jupyter Notebook documenting the data analysis and model development process.
 
 ## Technologies Used
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Statsmodels
-* Scikit-learn
-* Random Forest Regressor
-* Flask
-* MySQL
-* HTML
-* CSS
-* Jupyter Notebook
+* **Programming Language:** Python
+* **Data Analysis:** Pandas, NumPy
+* **Data Visualization:** Matplotlib, Seaborn
+* **Statistical Analysis:** Statsmodels
+* **Machine Learning:** Scikit-learn, Random Forest Regressor
+* **Web Framework:** Flask
+* **Database:** MySQL
+* **Frontend:** HTML, CSS
+* **Development Environment:** Jupyter Notebook
 
 ## Project Structure
 
@@ -30,114 +26,128 @@ loan_amount_prediction_project/
 │   └── style.css
 ├── templates/
 │   └── project2.html
-├── .env
 ├── .gitignore
 ├── loan_data.csv
 ├── project2.ipynb
+├── requirements.txt
 ├── server.py
 └── README.md
 ```
 
-The `.env` file is used for local configuration and must not be uploaded to GitHub. The `.venv/` and `.vscode/` directories are excluded from version control.
+**Note:** The `.env` file contains local environment variables and must not be committed to GitHub. The `.venv/` and `.vscode/` directories are excluded from version control.
 
 ## Exploratory Data Analysis
 
-The dataset was explored to understand its characteristics and prepare it for model development.
+Exploratory Data Analysis (EDA) was performed to understand the dataset, examine feature distributions, and prepare the data for machine learning.
 
-Statistical analysis was performed using `statsmodels.api`. Variance Inflation Factor (VIF) was also examined to assess multicollinearity among numerical predictors.
+The analysis included:
+
+* Exploring dataset characteristics and feature relationships.
+* Performing statistical analysis using `statsmodels.api`.
+* Examining multicollinearity using the Variance Inflation Factor (VIF).
+* Preparing the data for model training.
 
 ## Model Development
 
-A Random Forest Regressor was developed to predict loan amounts.
+A Random Forest Regressor was used to predict loan amounts.
 
-The workflow included:
+The model development workflow included:
 
-* Data exploration and preprocessing
-* Multicollinearity analysis using VIF
-* Feature scaling
-* Model training
-* Model evaluation using MAE and R²
+1. Data exploration and preprocessing.
+2. Multicollinearity analysis using VIF.
+3. Feature scaling.
+4. Model training.
+5. Model evaluation using Mean Absolute Error (MAE) and R².
+
+The model development process and analysis are documented in `project2.ipynb`.
 
 ## Model Performance
 
-The model achieved the following reported evaluation results:
+The model achieved the following evaluation results:
 
-| Metric                    | Result |
+| Evaluation Metric         | Result |
 | ------------------------- | -----: |
 | Mean Absolute Error (MAE) | 271.42 |
 | R² Score                  |  0.995 |
 
-The MAE indicates an average absolute prediction error of approximately 271.42 units of the target variable, while the R² score indicates that the model explains approximately 99.5% of the variance in the evaluation data.
+### Interpretation
 
-These results should be interpreted in the context of the dataset, the target variable's units, and the evaluation methodology.
+* **MAE = 271.42:** The model's predictions differ from the actual loan amounts by an average absolute error of approximately 271.42 units of the target variable.
+* **R² = 0.995:** The model explains approximately 99.5% of the variance in the target variable on the evaluated dataset.
+
+These results indicate strong performance on the evaluation data. However, further validation on unseen data is important to assess the model's generalization capability.
 
 ## Web Application
 
-The project includes a Flask application connected to a MySQL database.
+The project includes a Flask web application integrated with a MySQL database.
 
-* `server.py` handles the application logic.
-* `project2.html` provides the HTML interface.
-* `static/style.css` defines the interface styling.
-* MySQL is used for database integration.
-* The trained model is used in the application's prediction workflow.
+The main components are:
+
+* **`server.py`:** Handles the Flask application logic and database integration.
+* **`templates/project2.html`:** Provides the web interface.
+* **`static/style.css`:** Defines the interface styling.
+* **MySQL:** Supports database operations.
+* **Machine Learning Model:** Provides loan amount predictions within the application workflow.
 
 ## Setup and Installation
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd loan_amount_prediction_project
+git clone https://github.com/nijatibrahimov/Loan_amount_prediction_project.git
+cd Loan_amount_prediction_project
 ```
 
-### 2. Create a virtual environment
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it on Windows:
+Activate the environment on Windows:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### 3. Install the required packages
-
-Install the dependencies used by the notebook and Flask application.
-
-A `requirements.txt` file should be created to document the project's dependencies.
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure environment variables
+### 4. Configure Environment Variables
 
-Create a local `.env` file and configure the required MySQL connection settings.
+Create a local `.env` file in the project root directory.
 
-Do not commit database credentials or other secrets to GitHub.
+Add the environment variables required by `server.py` for the MySQL connection. Use the variable names expected by the application.
+
+**Do not upload your `.env` file or expose database credentials in your repository.**
 
 ### 5. Configure MySQL
 
-Create the required database and table, and ensure that the database configuration matches the values in your local `.env` file.
+Ensure that MySQL is installed and running.
 
-### 6. Run the application
+Create the database and required table expected by the application. Verify that the database name, table structure, and connection settings match the configuration used in `server.py`.
+
+### 6. Run the Application
 
 ```bash
 python server.py
 ```
 
-Follow the local address displayed by Flask to access the web application.
+Open the local address displayed in the terminal to access the web application.
 
 ## Future Improvements
 
-* Add additional regression models for comparison.
-* Improve feature selection and hyperparameter tuning.
+* Compare Random Forest with other regression algorithms.
+* Perform hyperparameter tuning.
+* Improve feature selection and preprocessing.
 * Add prediction visualizations.
 * Improve input validation and error handling.
-* Document the database schema and application setup.
+* Document the database schema and configuration.
+* Evaluate model performance on additional unseen data.
 
 ## Disclaimer
 
-The reported evaluation metrics describe the model's performance on the evaluation data used during development. They do not guarantee the same performance on unseen real-world data.
+The reported metrics reflect the model's evaluation results on the dataset used during development. They do not guarantee equivalent performance on unseen data or in real-world lending scenarios.
